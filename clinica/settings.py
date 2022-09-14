@@ -30,7 +30,11 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+# Será incluido o item 'consultas' como um novo app para o Django
+# NOTE: o "INSTALLED_APPS" é uma lista, sendo assim deve-se colocar uma
+#  virgula após o nome do APP
 INSTALLED_APPS = [
+    'consultas',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

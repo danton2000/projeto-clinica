@@ -64,3 +64,15 @@ O site estará disponivel no endereço "http://127.0.0.1:8000/"
 2. Criar um APP
 
 NOTE: O APP (aplicação) será o local no Django que setá implementado toda a lógica. Lembrando que um projeto pode ter vários APPs.
+
+"""
+   python -m manage startapp consultas
+"""
+
+clinica: pasta que contem os arquivos do projeto
+consultas: pasta que trata os arquivos da aplicação
+
+##### Adicionando o APP ao Projeto
+
+È necessário entrar no arquivo settings.py e localizar a constante "INSTALLED_APPS".
+A contante "INSTALLED_APPS" é uma lista que contem todos os APPs associados ao projeto, somente após um APP estar relacionado nesta lista que o Django pode identificar e utilizar o APP nos demais fins.
