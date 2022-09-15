@@ -16,24 +16,24 @@ O objetivo é desenvolver as seguintes telas:
 ## Preparar o ambiante
 
 Instalando o venv
-"""
+```
     python -m venv venv
-"""
+```
 
 Ativando o venv
-"""
+```
     .\venv\script\activate
-"""
+```
 
 Instalação do Django
-"""
+```
     pip install django
-"""
+```
 
 Colocando as versões do pacote em um arquivo .txt
-"""
+```
     pip freeze > requirents.txt
-"""
+```
 
 ### Estruturação do Projeto
 
@@ -42,9 +42,9 @@ NOTE: Projeto é o local que o motor do Django é executado, com isso as configu
 utilizando o arquivo settings.py
 
 Criando projeto no django
-"""
+```
    django-admin startproject nome-do-projeto .
-"""
+```
 
 - django-admin: comando de terminal responsável pela administração do Django
     - startproject: Parametro do comando django-admin responsável por estruturar um projeto em django
@@ -52,9 +52,9 @@ Criando projeto no django
         Como proximo parametro é o diretório que será executado o projeto, que a sugestão é informar o caminho relativo do diretório local "."
 
 #### Iniciar o serviço web
-"""
+```
     python -m manage runserver
-"""
+```
 
 - manage: Módulo do Django responsável por executar ações dentro do projeto
     - runserver: Parametro que determina a execução do módulo web disponível dentro do Django para desenvolvimento
@@ -65,9 +65,9 @@ O site estará disponivel no endereço "http://127.0.0.1:8000/"
 
 NOTE: O APP (aplicação) será o local no Django que setá implementado toda a lógica. Lembrando que um projeto pode ter vários APPs.
 
-"""
+```
    python -m manage startapp consultas
-"""
+```
 
 clinica: pasta que contem os arquivos do projeto
 consultas: pasta que trata os arquivos da aplicação
@@ -79,25 +79,25 @@ A contante "INSTALLED_APPS" é uma lista que contem todos os APPs associados ao 
 
 fazendo um migration
 
-"""
+```
     python -m manage migrations consultas
-"""
+```
 
 verificando os SQLs do migrations
 
-"""
+```
     python -m manage sqlmigrate consultas 0001
-"""
+```
 
 > IMPORTANTE: configure o TIME_ZONE para que aplicação seja executada com o horário local
 
 > Configurar a linguagem da aplicação no LANGUAGE_CODE
 
-"""
+```
     LANGUAGE_CODE = 'pt_BR'
 
     TIME_ZONE = 'America/Sao_Paulo'
-"""
+```
 
 ###### Registrar o APP a aplicação admin
 
