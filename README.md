@@ -76,3 +76,36 @@ consultas: pasta que trata os arquivos da aplicação
 
 È necessário entrar no arquivo settings.py e localizar a constante "INSTALLED_APPS".
 A contante "INSTALLED_APPS" é uma lista que contem todos os APPs associados ao projeto, somente após um APP estar relacionado nesta lista que o Django pode identificar e utilizar o APP nos demais fins.
+
+fazendo um migration
+
+"""
+    python -m manage migrations consultas
+"""
+
+verificando os SQLs do migrations
+
+"""
+    python -m manage sqlmigrate consultas 0001
+"""
+
+> IMPORTANTE: configure o TIME_ZONE para que aplicação seja executada com o horário local
+
+> Configurar a linguagem da aplicação no LANGUAGE_CODE
+
+"""
+    LANGUAGE_CODE = 'pt_BR'
+
+    TIME_ZONE = 'America/Sao_Paulo'
+"""
+
+###### Registrar o APP a aplicação admin
+
+A aplicação admin é uma interface gerada de maneira automática pelo Django, que utiliza o modelo desenvolvido na aplicação, para criar uma interface básica de gestão, ou seja uma tela de lista, detalhes, inclusão, atualização, exclusão.
+
+C => Create (Criar)
+R => Read (Ler)
+U => Update (Atualizar)
+D => Delete (Excluir)
+
+Para registrar a aplicação é necessário o arquivo consultas/admin.py e incluir os comandos de registro do modelo(MODELS)
