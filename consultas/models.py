@@ -53,3 +53,8 @@ class Medico(models.Model):
         null = True,
         blank = True
     )
+
+    # Função padrão de classe para transformar uma classe em texto
+    def __str__(self):
+
+        return self.nome

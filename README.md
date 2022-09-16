@@ -127,9 +127,11 @@ O migration (migrações) é o ato da capturar o modelo de dados desenvolvido em
 > IMPORTANTE: O migrate não está vinculado a nenhum banco de dados especifico
 
 ```
-    makemigrations: é o comando responsavel pela preparacao do modelo que sera implementdo no banco de dados
-        - como parametro é necessário informar o nome da aplicação
+    python -m manage makemigrations consultas
 ```
+
+makemigrations: é o comando responsavel pela preparacao do modelo que sera implementdo no banco de dados
+    - como parametro é necessário informar o nome da aplicação
 
 Após a execução deste comando, a pasta migrations e criada dentro da aplicação (consulta/migrations)
 
