@@ -35,7 +35,10 @@ class Medico(models.Model):
     )
 
     # DateField: tipo de atributo que representa uma data
-    data_nascimento = models.DateField()
+    data_nascimento = models.DateField(
+        null = True,
+        blank = True,
+    )
 
     cidade = models.CharField(
         max_length = 255,
