@@ -7,6 +7,21 @@ from django.db import models
 # Este models já possui diversos recursos para o uso de banco de dados e interfaces.
 # Como atribui id, que cria um identificador unico para o registro e o objects, que
 # trata modulo manage que nos possibilita criar comandos de consulta no banco de de dados
+class Especialidades(models.Model):
+
+    codigo = models.PositiveIntegerField()
+
+    nome = models.CharField(
+        max_length = 255
+    )
+
+    descricao = models.CharField(
+        max_length = 255
+    )
+
+    def __str__(self):
+
+        return self.nome
 
 # Documentação para selecionar os Fields
 # https://docs.djangoproject.com/en/4.1/ref/models/fields/
@@ -54,30 +69,14 @@ class Medico(models.Model):
         blank = True
     )
 
+    especialidade = models.ForeignKey(
+        Especialidades,
+        on_delete=models.PROTECT,
+        null= True,
+        blank = True
+    )
+
     # Função padrão de classe para transformar uma classe em texto
-    def __str__(self):
-
-        return self.nome
-
-class Especialidades(models.Model):
-
-    codigo = models.IntegerField(
-        null = True,
-        blank = True
-    )
-
-    nome = models.CharField(
-        max_length = 255,
-        null = True,
-        blank = True
-    )
-
-    descricao = models.CharField(
-        max_length = 255,
-        null = True,
-        blank = True
-    )
-
     def __str__(self):
 
         return self.nome
