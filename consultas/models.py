@@ -71,6 +71,7 @@ class Medico(models.Model):
 
     especialidade = models.ForeignKey(
         Especialidades,
+        # ele não deixa que a especilidade seja apaga se ela já estiver vinculada a um medico
         on_delete=models.PROTECT,
         null= True,
         blank = True
