@@ -4,6 +4,7 @@
 
 # O Django inclui o código das views por padrao a importação do django.shortcuts-render
 # Este módulo é responsavel
+from subprocess import IDLE_PRIORITY_CLASS
 from django.http import HttpResponse
 from django.shortcuts import render
 # from django.template import loader
@@ -31,3 +32,14 @@ def medicos(request):
     # Quando os módulos do shortcut são utilizados é reduzido o volumo de código(ATALHO)
     # No caso render, é necessário colocar como primeiro parâmetro o request(como paramentro da function view), em segundo o template e por ultimo o contexto(conjunto de dados)
     return render(request, 'medicos.html', contexto)
+
+# Função desenvolvimento para formação os detalhes do médico, para isso foi necessário que forem declarado, o parametro id_medico para receber a informacao vinda da URL
+def medico_detalhes(request, id_medico):
+    # Para todos os modelos é possivel utilizar o metodo get que tem a função de fazer uma consulta no banco de dados e retorna somente um item
+    # pk -> é um parametro possivel que faz referencia a primary key(chave primaria) definida no modelo
+    medico = Medico.objects.get(pk=id_medico)
+
+    contexto = {'medico': medico}
+
+    # return HttpResponse(f"Página detalhes dos medicos - ID do médico : {id_medico} - {medico.nome} ")
+    return render(request, 'medico_detalhes.html', contexto)

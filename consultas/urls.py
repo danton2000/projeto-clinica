@@ -10,5 +10,6 @@ from . import views
 urlpatterns = [
     # A função path é responsavel por estruturar a rota da aplicação
     path('', views.medicos),
-    path('medicos/', views.medicos)
+    path('medicos/', views.medicos),
+    path('medico_detalhes/<id_medico>', views.medico_detalhes, name="medico_detalhes")
 ]

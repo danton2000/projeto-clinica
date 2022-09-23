@@ -69,6 +69,8 @@ class Medico(models.Model):
         blank = True
     )
 
+    # Dentro tipos disponibilizados pelo Model Fields é possivel localizar o 
+    # tipo foreignKey (chave estrangeira), sendo assim o proprio Django se reponsabiliza em estruturar o modelo de dados
     especialidade = models.ForeignKey(
         Especialidades,
         # ele não deixa que a especilidade seja apaga se ela já estiver vinculada a um medico
