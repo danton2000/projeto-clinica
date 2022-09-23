@@ -147,3 +147,5 @@ A URLconf é um termo utilizado para tratar as arquivos url.py. Este arquivo est
 O comando startapp não cria o arquivo url.py na aplicação, a necessário criar o arquivo.
 
 > IMPORTANTE: O arquivo deve contar obrigatoriamente uma variável chamada urlpatterns
+
+> Many to Many (django) para consultas para a parte de consultas
