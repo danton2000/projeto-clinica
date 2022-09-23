@@ -11,5 +11,7 @@ urlpatterns = [
     # A função path é responsavel por estruturar a rota da aplicação
     path('', views.medicos),
     path('medicos/', views.medicos),
-    path('medico_detalhes/<id_medico>', views.medico_detalhes, name="medico_detalhes")
+    path('medico_detalhes/<id_medico>', views.medico_detalhes, name="medico_detalhes"),
+    path('procedimentos/', views.procedimentos, name="procedimentos"),
+    path('procedimento_detalhes/<id_procedimento>', views.procedimento_detalhes, name="procedimento_detalhes"),
 ]

@@ -9,7 +9,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 # from django.template import loader
 
-from .models import Medico
+from .models import Medico, Procedimentos
 # Create your views here.
 # Por definição as funções de visualização precisam obrigatório ter
 # um paramentro de request
@@ -43,3 +43,19 @@ def medico_detalhes(request, id_medico):
 
     # return HttpResponse(f"Página detalhes dos medicos - ID do médico : {id_medico} - {medico.nome} ")
     return render(request, 'medico_detalhes.html', contexto)
+
+def procedimentos(request):
+    
+    procedimentos = Procedimentos.objects.all()
+
+    contexto = {'procedimentos': procedimentos}
+
+    return render(request, 'procedimentos.html', contexto)
+
+def procedimento_detalhes(request, id_procedimento):
+   
+    procedimento = Procedimentos.objects.get(pk=id_procedimento)
+
+    contexto = {'procedimento': procedimento}
+
+    return render(request, 'procedimento_detalhes.html', contexto)

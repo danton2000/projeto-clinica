@@ -83,3 +83,19 @@ class Medico(models.Model):
     def __str__(self):
 
         return self.nome
+
+class Procedimentos(models.Model):
+
+    codigo = models.PositiveIntegerField()
+
+    nome = models.CharField(
+        max_length = 255
+    )
+
+    descricao = models.CharField(
+        max_length = 255
+    )
+
+    def __str__(self):
+
+        return self.nome
