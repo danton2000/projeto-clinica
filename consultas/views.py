@@ -13,7 +13,7 @@ from django.shortcuts import render
 # from django.template import loader
 
 #importando as classses do arquivo models
-from .models import Especialidades, Medico, Procedimentos
+from .models import Especialidades, Medico, Procedimentos, Consultas
 # Create your views here.
 def especialidades(request):
     especialidades = Especialidades.objects.all()
@@ -164,3 +164,65 @@ def procedimento_cadastro(request):
 
     return render(request, 'procedimento_cadastro.html')
 
+def consultas(request):
+    
+    consultas = Consultas.objects.all()
+
+    contexto = {'consultas': consultas}
+
+    return render(request, 'consultas.html', contexto)
+
+# Falta fazer detalhes da consulta e o cadastro !
+def consulta_detalhes(request, codigo_consulta):
+   
+    consulta = Consultas.objects.get(codigo=codigo_consulta)
+
+    contexto = {'consulta': consulta}
+
+    return render(request, 'consulta_detalhes.html', contexto)
+
+def consulta_cadastro(request):
+
+    # pegando os medicos
+    medicos = Medico.objects.all()
+
+    #pegando os procedimentos
+    procedimentos = Procedimentos.objects.all()
+
+    contexto = {
+        'medicos': medicos,
+        'procedimentos': procedimentos
+    }
+
+    # TEM QUE SABER SE É POST
+    if request.POST:
+
+        data = request.POST['data']
+
+        medico_id = request.POST['medico']
+
+        medico_obj = Medico.objects.get(pk=medico_id)
+
+        laudo = request.POST['laudo']
+
+        # lista de procedimentos
+        procedimentos_selecionados = request.POST.getlist('procedimentos')
+
+        print(procedimentos_selecionados)
+
+        for procedimento in procedimentos_selecionados:
+
+            procedimento_obj = Procedimentos.objects.get(codigo=procedimento)
+
+            consulta = Consultas(
+                data=data,
+                medico=medico_obj,
+                laudo=laudo,
+                procedimentos=procedimento_obj
+            )
+
+            consulta.save()
+
+        return HttpResponseRedirect(reverse('consultas'))
+
+    return render(request, 'consulta_cadastro.html', contexto)

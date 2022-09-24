@@ -10,17 +10,17 @@ from django.db import models
 class Especialidades(models.Model):
 
     codigo = models.AutoField(
-        primary_key = True
+        primary_key=True
     )
 
     nome = models.CharField(
-        max_length = 255
+        max_length=255
     )
 
     descricao = models.CharField(
-        max_length = 255,
-        null = True,
-        blank = True
+        max_length=1000,
+        null=True,
+        blank=True
     )
 
     def __str__(self):
@@ -29,6 +29,8 @@ class Especialidades(models.Model):
 
 # Documentação para selecionar os Fields
 # https://docs.djangoproject.com/en/4.1/ref/models/fields/
+
+
 class Medico(models.Model):
 
     # CharField: este tipo de atributo cria no banco de dados um campo de texto (VARCHAR)
@@ -42,27 +44,27 @@ class Medico(models.Model):
     # O uso de determinada atributo é utilizado o parametro 'null' para que no banco de dados
     # seja um 'not null' e 'blank' para permitir informações em branco na interface
     cpf = models.CharField(
-        max_length = 11,
-        null = True,
-        blank = True
+        max_length=11,
+        null=True,
+        blank=True
     )
 
     crm = models.CharField(
-        max_length = 10,
-        null = True,
-        blank = True
+        max_length=10,
+        null=True,
+        blank=True
     )
 
     # DateField: tipo de atributo que representa uma data
     data_nascimento = models.DateField(
-        null = True,
-        blank = True,
+        null=True,
+        blank=True,
     )
 
     cidade = models.CharField(
-        max_length = 255,
-        null = True,
-        blank = True
+        max_length=255,
+        null=True,
+        blank=True
     )
 
     # EmailField: tipo que representa um e-mail
@@ -71,12 +73,12 @@ class Medico(models.Model):
     email = models.EmailField()
 
     uf = models.CharField(
-        max_length = 2,
-        null = True,
-        blank = True
+        max_length=2,
+        null=True,
+        blank=True
     )
 
-    # Dentro tipos disponibilizados pelo Model Fields é possivel localizar o 
+    # Dentro tipos disponibilizados pelo Model Fields é possivel localizar o
     # tipo foreignKey (chave estrangeira), sendo assim o proprio Django se reponsabiliza em estruturar o modelo de dados
     especialidade = models.ForeignKey(
         Especialidades,
@@ -92,19 +94,46 @@ class Medico(models.Model):
 class Procedimentos(models.Model):
 
     codigo = models.AutoField(
-        primary_key = True
+        primary_key=True
     )
 
     nome = models.CharField(
-        max_length = 255
+        max_length=255
     )
 
     descricao = models.CharField(
-        max_length = 255,
-        null = True,
-        blank = True
+        max_length=1000,
+        null=True,
+        blank=True
     )
 
     def __str__(self):
 
         return self.nome
+
+class Consultas(models.Model):
+
+    codigo = models.AutoField(
+        primary_key=True
+    )
+
+    data = models.DateField()
+
+    medico = models.ForeignKey(
+        Medico,
+        on_delete=models.PROTECT
+    )
+
+    laudo = models.CharField(
+        max_length=1000,
+        null=True,
+        blank=True
+    )
+
+    procedimentos = models.ManyToManyField(
+        Procedimentos
+    )
+
+    def __str__(self):
+
+        return f"Consulta {self.codigo}"
