@@ -10,11 +10,17 @@ from . import views
 urlpatterns = [
     # A função path é responsavel por estruturar a rota da aplicação
     path('', views.medicos),
-    #fixa rotas
+    # fixa rotas
+
+    path('especialidades/listar/', views.especialidades, name="especialidades"),
+    path('especialidades/cadastrar/', views.especialidade_cadastro, name="especialidade_cadastrar"),
     path('medicos/listar/', views.medicos, name="medicos"),
-    path('medicos/cadastrar/', views.medico_cadastro , name="medico_cadastrar"),
+    path('medicos/cadastrar/', views.medico_cadastro, name="medico_cadastrar"),
     path('procedimentos/listar/', views.procedimentos, name="procedimentos"),
-    #dinamicas rotas
+    path('procedimentos/cadastrar/', views.procedimento_cadastro, name="procedimento_cadastrar"),
+
+    # dinamicas rotas
+    path('especialidades/detalhes/<codigo_especialidade>', views.especialidade_detalhes, name="especialidade_detalhes"),
     path('medicos/detalhes/<id_medico>', views.medico_detalhes, name="medico_detalhes"),
-    path('procedimentos/detalhes/<id_procedimento>', views.procedimento_detalhes, name="procedimento_detalhes")
+    path('procedimentos/detalhes/<codigo_procedimento>', views.procedimento_detalhes, name="procedimento_detalhes")
 ]
