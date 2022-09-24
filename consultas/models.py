@@ -9,14 +9,18 @@ from django.db import models
 # trata modulo manage que nos possibilita criar comandos de consulta no banco de de dados
 class Especialidades(models.Model):
 
-    codigo = models.PositiveIntegerField()
+    codigo = models.AutoField(
+        primary_key = True
+    )
 
     nome = models.CharField(
         max_length = 255
     )
 
     descricao = models.CharField(
-        max_length = 255
+        max_length = 255,
+        null = True,
+        blank = True
     )
 
     def __str__(self):
@@ -64,7 +68,10 @@ class Medico(models.Model):
     # EmailField: tipo que representa um e-mail
     # Para o banco de dados é simplesmente um texto, e para a interface um componente
     # Com validação do e-mail
-    email = models.EmailField(
+    email = models.EmailField()
+
+    uf = models.CharField(
+        max_length = 2,
         null = True,
         blank = True
     )
@@ -86,14 +93,18 @@ class Medico(models.Model):
 
 class Procedimentos(models.Model):
 
-    codigo = models.PositiveIntegerField()
+    codigo = models.AutoField(
+        primary_key = True
+    )
 
     nome = models.CharField(
         max_length = 255
     )
 
     descricao = models.CharField(
-        max_length = 255
+        max_length = 255,
+        null = True,
+        blank = True
     )
 
     def __str__(self):
