@@ -148,4 +148,4 @@ O comando startapp não cria o arquivo url.py na aplicação, a necessário cria
 
 > IMPORTANTE: O arquivo deve contar obrigatoriamente uma variável chamada urlpatterns
 
-> Many to Many (django) para consultas para a parte de consultas
+> Many to Many (django) para consultas para a parte de consultas, que nem a alunos_turmas

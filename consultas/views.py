@@ -5,7 +5,10 @@
 # O Django inclui o código das views por padrao a importação do django.shortcuts-render
 # Este módulo é responsavel
 from subprocess import IDLE_PRIORITY_CLASS
-from django.http import HttpResponse
+# HttpResponseRedirect é como o redirect do flask
+from django.http import HttpResponse, HttpResponseRedirect
+# reverse passa o nome da url ele gera a url
+from django.urls import reverse
 from django.shortcuts import render
 # from django.template import loader
 
@@ -44,6 +47,18 @@ def medico_detalhes(request, id_medico):
     # return HttpResponse(f"Página detalhes dos medicos - ID do médico : {id_medico} - {medico.nome} ")
     return render(request, 'medico_detalhes.html', contexto)
 
+def medico_cadastro(request):
+
+    # TEM QUE SABER SE É POST
+    if request.POST:
+
+        medico = Medico(nome=request.POST['nome'])
+
+        medico.save()
+        # medicos = é o name da rota
+        return HttpResponseRedirect(reverse('medicos'))
+    return render(request, 'medico_cadastro.html')
+
 def procedimentos(request):
     
     procedimentos = Procedimentos.objects.all()
@@ -59,3 +74,4 @@ def procedimento_detalhes(request, id_procedimento):
     contexto = {'procedimento': procedimento}
 
     return render(request, 'procedimento_detalhes.html', contexto)
+

@@ -14,6 +14,6 @@
     {% for medico in medicos %}
     <li><a href="{% url 'medico_detalhes' id_medico=medico.id %}">{{medico.nome}}</a></li>        
     {% endfor %}
-
+    <a href="{% url 'medico_cadastrar' %}">Cadastrar</a>
 </body>
 </html>
