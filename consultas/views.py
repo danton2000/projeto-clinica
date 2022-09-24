@@ -177,7 +177,12 @@ def consulta_detalhes(request, codigo_consulta):
    
     consulta = Consultas.objects.get(codigo=codigo_consulta)
 
-    contexto = {'consulta': consulta}
+    procedimentos = consulta.procedimentos.all()
+
+    contexto = {
+        'consulta': consulta,
+        'procedimentos': procedimentos
+    }
 
     return render(request, 'consulta_detalhes.html', contexto)
 
@@ -205,20 +210,26 @@ def consulta_cadastro(request):
 
         laudo = request.POST['laudo']
 
+        consulta = Consultas(
+            data=data,
+            medico=medico_obj,
+            laudo=laudo
+        )
+
+        consulta.save()
+
         # lista de procedimentos
         procedimentos_selecionados = request.POST.getlist('procedimentos')
 
         print(procedimentos_selecionados)
 
         for procedimento in procedimentos_selecionados:
-
+            #pegando os obj de cada procedimento
             procedimento_obj = Procedimentos.objects.get(codigo=procedimento)
 
-            consulta = Consultas(
-                data=data,
-                medico=medico_obj,
-                laudo=laudo,
-                procedimentos=procedimento_obj
+            #fazendo a vinculação com os procedimentos e a consulta que já foi criada anteriormente
+            consulta.procedimentos.add(
+                procedimento_obj
             )
 
             consulta.save()

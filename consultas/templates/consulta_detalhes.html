@@ -29,7 +29,13 @@
             </tr>
             <tr>
                 <th>Procedimentos</th>
-                <td>{{consulta.procedimentos}}</td>
+               
+                <td>
+                    {% for procedimento in procedimentos %}
+                    <strong>{{procedimento.nome}}</strong>
+                    {% endfor %}
+                </td>
+                
             </tr>
         </table>
 
