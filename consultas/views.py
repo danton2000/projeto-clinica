@@ -177,6 +177,7 @@ def consulta_detalhes(request, codigo_consulta):
    
     consulta = Consultas.objects.get(codigo=codigo_consulta)
 
+    # pegando todos os procedimentos que estão vinculados a essa consulta, e passando para o contexto
     procedimentos = consulta.procedimentos.all()
 
     contexto = {
