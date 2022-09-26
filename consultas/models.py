@@ -17,8 +17,7 @@ class Especialidades(models.Model):
         max_length=255
     )
 
-    descricao = models.CharField(
-        max_length=1000,
+    descricao = models.TextField(
         null=True,
         blank=True
     )
@@ -101,8 +100,7 @@ class Procedimentos(models.Model):
         max_length=255
     )
 
-    descricao = models.CharField(
-        max_length=1000,
+    descricao = models.TextField(
         null=True,
         blank=True
     )
@@ -124,8 +122,7 @@ class Consultas(models.Model):
         on_delete=models.PROTECT
     )
 
-    laudo = models.CharField(
-        max_length=1000,
+    laudo = models.TextField(
         null=True,
         blank=True
     )

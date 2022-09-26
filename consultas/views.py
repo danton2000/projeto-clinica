@@ -222,7 +222,7 @@ def consulta_cadastro(request):
         # lista de procedimentos
         procedimentos_selecionados = request.POST.getlist('procedimentos')
 
-        print(procedimentos_selecionados)
+        # print(procedimentos_selecionados)
 
         for procedimento in procedimentos_selecionados:
             #pegando os obj de cada procedimento
