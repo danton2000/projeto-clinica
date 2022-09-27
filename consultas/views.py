@@ -215,21 +215,23 @@ def consulta_cadastro(request):
 
         laudo = request.POST['laudo']
 
+        #criando o obj consulta
         consulta = Consultas(
             data=data,
             medico=medico_obj,
             laudo=laudo
         )
 
+        #salvando a consulta com o objeto(consulta)
         consulta.save()
 
-        # lista de procedimentos
+        # pegando a lista de procedimentos, enviada pelo formulário(html)
         procedimentos_selecionados = request.POST.getlist('procedimentos')
 
         # print(procedimentos_selecionados)
-
+        #percorrendo a lista de procedimentos, e pegando 1 procedimento(linha)
         for procedimento in procedimentos_selecionados:
-            #pegando os obj de cada procedimento
+            #pegando os OBJ de cada procedimento, usando o procedimento(q vem do for)
             procedimento_obj = Procedimentos.objects.get(codigo=procedimento)
 
             #fazendo a vinculação com os procedimentos e a consulta que já foi criada anteriormente
@@ -237,6 +239,7 @@ def consulta_cadastro(request):
                 procedimento_obj
             )
 
+            #salvando os procedimentos na consulta
             consulta.save()
 
         return HttpResponseRedirect(reverse('consultas'))
