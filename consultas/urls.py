@@ -9,6 +9,12 @@ from . import views
 # A variável urlpatterns é uma lista, e a ordem dos itens importam
 urlpatterns = [
     # A função path é responsavel por estruturar a rota da aplicação
+
+    # name = serve para nomear as rotas, podemos chamar as rotas pelo nome pela tag <a> do html
+
+    # estrutura das rotas dessa aplicação:
+    # Aplicação/Model/função(listar, cadastrar, detalhes)
+
     path('', views.index, name="index"),
 
     # fixa rotas
