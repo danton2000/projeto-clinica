@@ -19,6 +19,7 @@ from django.urls import path, include
 
 urlpatterns = [
     # incluindo rotas do app no projeto
+    path('', include('consultas.urls')),
     path('consultas/', include('consultas.urls')),
     path('admin/', admin.site.urls)
 ]

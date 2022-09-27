@@ -15,6 +15,10 @@ from django.shortcuts import render
 #importando as classses do arquivo models
 from .models import Especialidades, Medico, Procedimentos, Consultas
 # Create your views here.
+def index(request):
+   
+    return render(request, 'index.html')
+
 def especialidades(request):
     especialidades = Especialidades.objects.all()
 
